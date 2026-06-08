@@ -79,8 +79,8 @@ class CountdownTimer {
     }
 }
 
-// Set deadline to 2025/05/20 at 12:00 Cairo time (UTC+3)
-const deadline = new Date(Date.UTC(2025, 5, 6, 21, 0, 0)); // 9:00 UTC = 12:00 UTC+3
+// Set deadline to 2026 /05/20 at 12:00 Cairo time (UTC+3)
+const deadline = new Date("2026-06-30T12:00:00+03:00");
 // Initialize and start the countdown
 document.addEventListener('DOMContentLoaded', () => {
     const countdown = new CountdownTimer(deadline);

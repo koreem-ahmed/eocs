@@ -228,7 +228,6 @@
   </footer>
   </div>
 
-  <script src="../../js/main.js"></script>
   <script>
     const form = document.getElementById('registerForm');
     const submitButton = form.querySelector('.auth-submit');
@@ -422,18 +421,18 @@
       try {
         setLoading(true);
 
-        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdRF5cdNwTI4PaKAVPRQX4GrStAquRtPuvjBtDSAcOcDZpuLA/formResponse";
+        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfYjpkzkfl9ryqx5t1idrTTrvmpj11J6MG7e3nBg68FqYYsag/formResponse";
         const formData = {
-          "entry.906820119": document.getElementById('fullNameEn').value,
-          "entry.663837856": document.getElementById('fullNameAr').value,
-          "entry.1200793077": document.getElementById('nationalId').value,
-          "entry.1590071973": document.getElementById('birthdate').value,
-          "entry.315930843": document.getElementById('email').value,
-          "entry.1356959310": document.getElementById('password').value,
-          "entry.238163292": document.getElementById('phone').value,
-          "entry.1548059878": document.getElementById('schoolName').value,
-          "entry.1180053244": document.getElementById('governorate').value,
-          "entry.1261290924": document.getElementById('gradeLevel').value
+          "entry.2027085933": document.getElementById('fullNameEn').value,
+          "entry.1793855602": document.getElementById('fullNameAr').value,
+          "entry.1833865131": document.getElementById('nationalId').value,
+          "entry.485008608": document.getElementById('birthdate').value,
+          "entry.886429027": document.getElementById('email').value,
+          "entry.335030511": document.getElementById('password').value,
+          "entry.775308855": document.getElementById('phone').value,
+          "entry.153570465": document.getElementById('schoolName').value,
+          "entry.1146388377": document.getElementById('governorate').value,
+          "entry.251495776": document.getElementById('gradeLevel').value
         };
 
         const data = new URLSearchParams();
@@ -451,7 +450,7 @@
         });
 
         alert("Registration submitted successfully!");
-        form.reset();
+        window.location.href = "../../index.html";
       } catch (error) {
         showError('An error occurred during registration. Please try again.');
         console.error('Registration error:', error);
@@ -468,8 +467,10 @@
 
   <script src="../../js/mobile-menu.js"></script>
   <script src="../../js/nav-scroll.js"></script>
-  <script src="../../js/background-symbols.js"></script>
   <script src="../../js/particles.js"></script>
+</body>
+
+</html>
 </body>
 
 </html>
