@@ -12,7 +12,7 @@ class CountdownTimer {
     }
 
     calculateTimeLeft() {
-        const now = new Date().getTime();
+        const now = Date.now(); 
         const distance = this.deadline - now;
 
         if (distance < 0) {
@@ -80,7 +80,7 @@ class CountdownTimer {
 }
 
 // Set deadline to 2026 /05/20 at 12:00 Cairo time (UTC+3)
-const deadline = new Date("2026-06-30T12:00:00+03:00");
+const deadline = Date.UTC(2026, 5, 27, 9, 0, 0);
 // Initialize and start the countdown
 document.addEventListener('DOMContentLoaded', () => {
     const countdown = new CountdownTimer(deadline);

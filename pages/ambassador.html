@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Egyptian Olympiad in Computational Science - Ambassador Program">
+    <title>Ambassador Program EOCS</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/modern.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico">
+    <style>
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .dash { display: none; }
+        .dash.active { display: block; animation: fadeInUp 0.6s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .ambassador-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .tier-badge { font-family: 'Orbitron', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.65rem; border-radius: 20px; background: rgba(173, 130, 49, 0.1); border: 1px solid rgba(173, 130, 49, 0.3); color: var(--egyptian-gold); display: inline-block; }
+        .tier-head { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .tier-name { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; color: var(--egyptian-gold); }
+        .lb-item { display: grid; grid-template-columns: 3.2rem 1fr auto; align-items: center; gap: 1rem; padding: 1.15rem 1.4rem; border-radius: 16px; background: rgba(63, 57, 56, 0.35); border: 1px solid rgba(173, 130, 49, 0.12); margin-bottom: 0.75rem; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(14px); }
+        .lb-item:hover { border-color: rgba(173, 130, 49, 0.35); transform: translateX(6px); box-shadow: 0 8px 32px rgba(173, 130, 49, 0.12); }
+        .lb-item.r1 { background: rgba(173, 130, 49, 0.1); border: 1px solid rgba(173, 130, 49, 0.38); box-shadow: 0 4px 28px rgba(173, 130, 49, 0.09); }
+        .lb-rank { font-family: 'Orbitron', sans-serif; font-size: 1.35rem; font-weight: 700; text-align: center; color: rgba(245, 240, 236, 0.4); }
+        .lb-item.r1 .lb-rank { font-size: 1.7rem; color: var(--egyptian-gold); }
+        .lb-name { font-family: 'Orbitron', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--egyptian-light); margin-bottom: 0.2rem; }
+        .lb-item.r1 .lb-name { color: var(--egyptian-gold); }
+        .lb-meta { font-size: 0.76rem; color: rgba(245, 240, 236, 0.5); }
+        .lb-score { text-align: right; }
+        .lb-val { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--egyptian-gold); line-height: 1; }
+        .lb-item.r1 .lb-val { color: #c49a3a; font-size: 1.9rem; }
+        .lb-lbl { font-family: 'Orbitron', sans-serif; font-size: 0.56rem; letter-spacing: 1px; color: rgba(245, 240, 236, 0.4); text-transform: uppercase; }
+        .lb-empty { text-align: center; padding: 3rem 2rem; color: rgba(245, 240, 236, 0.5); }
+        .lb-empty i { font-size: 2.5rem; color: var(--egyptian-gold); margin-bottom: 1rem; display: block; }
+        .share-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border: 1.5px solid rgba(173, 130, 49, 0.3); border-radius: 100px; background: rgba(173, 130, 49, 0.06); color: var(--egyptian-gold); font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .share-btn:hover { background: var(--egyptian-gold); color: #1a1412; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(173, 130, 49, 0.35); }
+        .copy-btn { padding: 0.55rem 1.3rem; background: var(--egyptian-gold); color: #1a1412; border: none; border-radius: 100px; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+        .copy-btn:hover { background: #c49a3a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(173, 130, 49, 0.35); }
+        .copy-btn.copied { background: #3a9a5c !important; color: #fff !important; }
+        .reset-btn { display: block; width: 100%; padding: 0.9rem; background: transparent; border: 1.5px solid rgba(173, 130, 49, 0.18); border-radius: 100px; color: rgba(245, 240, 236, 0.5); font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+        .reset-btn:hover { border-color: var(--egyptian-gold); color: var(--egyptian-gold); background: rgba(173, 130, 49, 0.06); }
+        .point-box { text-align: center; padding: 1.5rem; min-width: 130px; background: rgba(63, 57, 56, 0.35); border: 1px solid rgba(173, 130, 49, 0.12); border-radius: 18px; backdrop-filter: blur(14px); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .point-box:hover { transform: translateY(-6px); border-color: rgba(173, 130, 49, 0.35); box-shadow: 0 16px 48px rgba(173, 130, 49, 0.1); }
+        .point-val { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--egyptian-gold); line-height: 1; }
+        .point-lbl { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; letter-spacing: 2px; color: rgba(245, 240, 236, 0.5); text-transform: uppercase; margin-top: 0.4rem; }
+        .ref-box { text-align: center; padding: 1.75rem 1.5rem; background: rgba(63, 57, 56, 0.35); border: 1px solid rgba(173, 130, 49, 0.12); border-radius: 18px; backdrop-filter: blur(14px); }
+        .ref-lbl { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px; color: var(--egyptian-gold); text-transform: uppercase; margin-bottom: 0.8rem; }
+        #referralLink { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--egyptian-gold); line-height: 1.55; word-break: break-all; margin-bottom: 1rem; padding: 0.75rem; background: rgba(173, 130, 49, 0.05); border-radius: 10px; border: 1px solid rgba(173, 130, 49, 0.15); }
+        .dash-welcome { text-align: center; padding-bottom: 2rem; border-bottom: 1px solid rgba(173, 130, 49, 0.15); margin-bottom: 2rem; }
+        .dash-welcome h3 { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: var(--egyptian-gold); margin-bottom: 0.5rem; letter-spacing: 2px; }
+        .dash-welcome p { color: rgba(245, 240, 236, 0.6); font-size: 0.95rem; }
+        .dash-welcome strong { color: var(--egyptian-gold); }
+        .points-display { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .share-area { text-align: center; margin-bottom: 2rem; }
+        .share-area > p { font-size: 0.9rem; color: rgba(245, 240, 236, 0.6); margin-bottom: 1rem; }
+        .share-btns { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+        .ref-grid { margin-bottom: 2rem; }
+        .loading-spinner { display: inline-block; width: 1.2rem; height: 1.2rem; border: 2px solid rgba(173,130,49,0.3); border-top-color: var(--egyptian-gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin-left: 0.5rem; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .submit-loading { opacity: 0.7; pointer-events: none; }
+        @media (max-width: 768px) {
+            .points-display { gap: 1rem; }
+            .point-box { min-width: 100px; padding: 1.2rem; }
+            .lb-item { grid-template-columns: 2.5rem 1fr auto; padding: 0.9rem 1rem; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="modern-page ambassador-page">
+    <canvas id="particle-network"></canvas>
+    <div class="background-symbols" aria-hidden="true">
+        <span class="bg-symbol" style="top:10%;left:5%;font-size:6rem;animation-delay:0s;">&#x2625;</span>
+        <span class="bg-symbol" style="top:30%;right:8%;font-size:5rem;animation-delay:-5s;">&#x25B3;</span>
+        <span class="bg-symbol" style="top:60%;left:3%;font-size:7rem;animation-delay:-10s;">&#x2625;</span>
+        <span class="bg-symbol" style="top:80%;right:5%;font-size:4rem;animation-delay:-15s;">&#x25C7;</span>
+        <span class="bg-symbol" style="top:45%;left:50%;font-size:8rem;animation-delay:-20s;opacity:0.05;">&#x13199;</span>
+        <span class="bg-symbol" style="top:15%;left:60%;font-size:4.5rem;animation-delay:-8s;">&#x13080;</span>
+        <span class="bg-symbol" style="top:75%;left:25%;font-size:6.5rem;animation-delay:-12s;">&#x25B3;</span>
+    </div>
+    <div class="main-content">
+        <nav class="main-nav">
+            <div class="nav-logo">
+                <a href="../index.html"><img src="../assets/ECOS logo - PROFILE COVER-05.svg" alt="EOCS Logo"></a>
+            </div>
+            <button class="mobile-menu-btn" title="Toggle Menu" aria-label="Toggle navigation menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links desktop-nav">
+                <a href="../index.html"><i class="fa-solid fa-house nav-link-icon"></i>Home</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info nav-link-icon"></i>About</a>
+                <a href="eligibility.html"><i class="fa-solid fa-user-check nav-link-icon"></i>Eligibility</a>
+                <a href="prizes.html"><i class="fa-solid fa-trophy nav-link-icon"></i>Prizes</a>
+                <a href="ambassador.html" class="active"><i class="fa-solid fa-star nav-link-icon"></i>Ambassador</a>
+                <a href="partners.html"><i class="fa-solid fa-handshake nav-link-icon"></i>Partners</a>
+                <a href="contact.html"><i class="fa-solid fa-envelope nav-link-icon"></i>Contact</a>
+                <a href="auth/register.html" class="nav-register-btn"><i class="fa-solid fa-rocket nav-link-icon"></i>Register</a>
+            </div>
+            <div class="mobile-nav">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="eligibility.html">Eligibility</a>
+                <a href="prizes.html">Prizes</a>
+                <a href="ambassador.html" class="active">Ambassador</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html">Contact</a>
+                <a href="auth/register.html" class="nav-register-btn">Register</a>
+            </div>
+        </nav>
+        <header class="page-hero">
+            <span class="hero-eyebrow">Ambassador Program</span>
+            <h1>AMBASSADOR</h1>
+            <hr class="hero-divider">
+            <p>Spread the word about EOCS. Every registration through your link earns you points. Top ambassadors win exclusive rewards and lifetime recognition.</p>
+        </header>
+        <main>
+            <section class="page-section">
+                <span class="section-eyebrow">How It Works</span>
+                <p class="section-intro">Become an official ambassador in three simple steps and start earning immediately.</p>
+                <div class="ambassador-grid">
+                    <div class="glass-card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+                        <h3 style="font-size:0.85rem;letter-spacing:1.5px;color:var(--egyptian-gold);margin-bottom:0.8rem;">Sign Up</h3>
+                        <p style="font-size:0.9rem;color:rgba(245,240,236,0.55);line-height:1.65;">Fill out the form to become an official EOCS Ambassador and receive your unique referral link instantly.</p>
+                    </div>
+                    <div class="glass-card reveal" style="transition-delay:0.1s">
+                        <div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                        <h3 style="font-size:0.85rem;letter-spacing:1.5px;color:var(--egyptian-gold);margin-bottom:0.8rem;">Share Your Link</h3>
+                        <p style="font-size:0.9rem;color:rgba(245,240,236,0.55);line-height:1.65;">Send your referral link to friends, classmates, and science enthusiasts. When they register, you earn points.</p>
+                    </div>
+                    <div class="glass-card reveal" style="transition-delay:0.2s">
+                        <div class="card-icon"><i class="fa-solid fa-crown"></i></div>
+                        <h3 style="font-size:0.85rem;letter-spacing:1.5px;color:var(--egyptian-gold);margin-bottom:0.8rem;">Earn &amp; Win</h3>
+                        <p style="font-size:0.9rem;color:rgba(245,240,236,0.55);line-height:1.65;">Each successful registration gives you 1 point. Climb the leaderboard and unlock exclusive ambassador rewards.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="page-section">
+                <span class="section-eyebrow">Ambassador Prizes</span>
+                <p class="section-intro">Unlock recognition and rewards as you grow the EOCS community.</p>
+                <div class="content-grid">
+                    <div class="glass-card eligibility-card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="tier-head">
+                            <span class="tier-name">5+ Referrals</span>
+                            <span class="tier-badge">ELIGIBLE</span>
+                        </div>
+                        <p style="font-size:0.9rem;color:rgba(245,240,236,0.55);line-height:1.65;">Any ambassador who successfully refers five or more registered participants will receive an official Certificate of Recognition issued by the Egyptian Olympiad in Computational Science (EOCS) in collaboration with the Egypt University of Informatics.</p>
+                    </div>
+                    <div class="glass-card eligibility-card reveal" style="transition-delay:0.1s">
+                        <div class="card-icon"><i class="fa-solid fa-medal"></i></div>
+                        <div class="tier-head">
+                            <span class="tier-name">Top Ambassadors</span>
+                            <span class="tier-badge">TOP RANKED</span>
+                        </div>
+                        <p style="font-size:0.9rem;color:rgba(245,240,236,0.55);line-height:1.65;">The highest-performing ambassadors on the leaderboard receive featured recognition on the EOCS website, exclusive certificates, and special mentions across all official channels.</p>
+                    </div>
+                    <div class="glass-card eligibility-card reveal" style="transition-delay:0.2s">
+                        <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="tier-head">
+                            <span class="tier-name">#1 Grand Champion</span>
+                            <span class="tier-badge">&#127942; #1 ONLY</span>
+                        </div>
+                        <p style="font-size:0.9rem;color:rgba(245,240,236,0.55);line-height:1.65;">The ambassador who finishes #1 on the leaderboard wins lifetime EOCS recognition, a premium ambassador badge, and permanent featured placement on the official website.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="page-section" id="ambSection">
+                <span class="section-eyebrow">Join Now</span>
+                <p class="section-intro">Register below to get your personal referral dashboard and start tracking your impact.</p>
+                <div class="register-form-card reveal">
+                    <h2 id="cardTitle" style="text-align:center; margin-bottom:2.5rem; font-family:'Orbitron',sans-serif; color:var(--egyptian-gold); font-size:1.3rem; letter-spacing:3px; text-transform:uppercase;">Become an Ambassador</h2>
+                    <form id="ambassadorForm" class="auth-form register-form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span style="color:rgba(173,130,49,0.6);">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Your Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span style="color:rgba(173,130,49,0.6);">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="school">School / University <span style="color:rgba(173,130,49,0.6);">*</span></label>
+                            <input type="text" id="school" name="school" placeholder="Your Institution" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country <span style="color:rgba(173,130,49,0.6);">*</span></label>
+                            <select id="country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-group--full">
+                            <label for="social">Social Handle <span style="color:rgba(245,240,236,0.4);font-weight:400;letter-spacing:0;text-transform:none;">(Optional)</span></label>
+                            <input type="text" id="social" name="social" placeholder="@yoursocial or handle">
+                        </div>
+                        <p class="form-hint" style="grid-column: 1 / -1; text-align:center; font-size:0.85rem; color:rgba(245,240,236,0.5); margin-bottom:1rem;">
+                            <i class="fa-solid fa-lock" style="margin-right:0.3rem;"></i> Protected by verification &middot; One account per email &middot; 1 point per referral
+                        </p>
+                        <button type="submit" class="auth-submit" id="submitBtn" style="grid-column: 1 / -1;">Become an Ambassador</button>
+                    </form>
+                    <div id="dashboard" class="dash">
+                        <div class="dash-welcome">
+                            <h3>Welcome, <span id="ambassadorName"></span>!</h3>
+                            <p>You have <strong id="referralCount">0</strong> referrals and <strong id="pointCount">0</strong> points so far — keep sharing!</p>
+                        </div>
+                        <div class="points-display">
+                            <div class="point-box">
+                                <div class="point-val" id="dashPoints">0</div>
+                                <div class="point-lbl">Points</div>
+                            </div>
+                            <div class="point-box">
+                                <div class="point-val" id="dashReferrals">0</div>
+                                <div class="point-lbl">Referrals</div>
+                            </div>
+                            <div class="point-box">
+                                <div class="point-val" id="dashRank">-</div>
+                                <div class="point-lbl">Rank</div>
+                            </div>
+                        </div>
+                        <div class="ref-grid">
+                            <div class="ref-box">
+                                <div class="ref-lbl">Your Referral Link</div>
+                                <div class="ref-lbl">You must save this link somewhere safe! you might not access it again from this page</div>
+                                <div id="referralLink"></div>
+                                <button class="copy-btn" onclick="copyLink(event)">
+                                    <i class="fa-solid fa-link"></i> Copy Link
+                                </button>
+                            </div>
+                        </div>
+                        <div class="share-area">
+                            <p>Share with your network:</p>
+                            <div class="share-btns">
+                                <button class="share-btn" onclick="shareWhatsApp()"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                <button class="share-btn" onclick="shareTelegram()"><i class="fa-brands fa-telegram"></i> Telegram</button>
+                                <button class="share-btn" onclick="shareFacebook()"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+                                <button class="share-btn" onclick="shareTwitter()"><i class="fa-brands fa-x-twitter"></i> X / Twitter</button>
+                            </div>
+                        </div>
+                        <button class="reset-btn" onclick="resetForm()">Register Another Ambassador</button>
+                    </div>
+                </div>
+            </section>
+            <section class="page-section" id="leaderboard">
+                <span class="section-eyebrow">Leaderboard</span>
+                <p class="section-intro">See who is leading the ambassador program this season. Updates in real-time.</p>
+                <div class="glass-card reveal" style="padding:2rem;">
+                    <div id="leaderboardContainer">
+                        <div class="lb-empty">
+                            <i class="fa-solid fa-chart-simple"></i>
+                            <p>Loading leaderboard...</p>
+                        </div>
+                    </div>
+                </div>
+            
+            <section class="page-section" id="lookupSection">
+                <span class="section-eyebrow">Lost Your Link?</span>
+                <p class="section-intro">Already an ambassador but forgot your referral link? Enter your email to retrieve it.</p>
+                <div class="register-form-card reveal" style="max-width: 600px; margin: 0 auto;">
+                    <div class="auth-form" style="display:flex; flex-direction:column; gap:1rem;">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="lookupEmail">Email Address</label>
+                            <input type="email" id="lookupEmail" placeholder="your.email@gmail.com" required>
+                        </div>
+                        <button type="button" class="auth-submit" id="lookupBtn" style="width:100%;">
+                            <i class="fa-solid fa-magnifying-glass" style="margin-right:0.5rem;"></i>Get My Link
+                        </button>
+                    </div>
+                    <div id="lookupResult" style="display:none; margin-top:1.5rem; text-align:center;">
+                        <div style="font-family:'DM Mono',monospace; font-size:0.85rem; color:var(--egyptian-gold); word-break:break-all; padding:0.75rem; background:rgba(173,130,49,0.05); border-radius:10px; border:1px solid rgba(173,130,49,0.15); margin-bottom:1rem;" id="lookupLink"></div>
+                        <button class="copy-btn" id="lookupCopyBtn" style="padding:0.55rem 1.3rem; background:var(--egyptian-gold); color:#1a1412; border:none; border-radius:100px; font-family:'Orbitron',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.3s ease;">
+                            <i class="fa-solid fa-link"></i> Copy Link
+                        </button>
+                    </div>
+                    <div id="lookupError" style="display:none; margin-top:1rem; text-align:center; color:#e74c3c; font-size:0.9rem;">
+                        <i class="fa-solid fa-circle-exclamation" style="margin-right:0.3rem;"></i> No ambassador found with this email.
+                    </div>
+                    <div id="lookupLoading" style="display:none; margin-top:1rem; text-align:center; color:rgba(245,240,236,0.5);">
+                        <i class="fas fa-spinner fa-spin" style="margin-right:0.5rem;"></i> Searching...
+                    </div>
+                </div>
+            </section>
+</section>
+        </main>
+        <footer class="main-footer modern-footer">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <img src="../assets/ECOS logo - PROFILE COVER-05.svg" alt="EOCS" class="footer-logo">
+                    <p>Egyptian Olympiad in Computational Science — bridging heritage and innovation for students across Egypt.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="about.html">About EOCS</a></li>
+                        <li><a href="eligibility.html">Eligibility</a></li>
+                        <li><a href="prizes.html">Prizes</a></li>
+                        <li><a href="ambassador.html">Ambassador</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Competition</h3>
+                    <ul>
+                        <li><a href="auth/register.html">Register</a></li>
+                        <li><a href="../index.html#competition">Structure</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/egyptocs" class="social-icon facebook" aria-label="Facebook"></a>
+                        <a href="https://whatsapp.com/channel/0029Vb5QNKSKAwEiegaoYF2B" class="social-icon whatsapp" aria-label="WhatsApp"></a>
+                        <a href="https://www.linkedin.com/company/eg-ocs/" class="social-icon linkedin" aria-label="LinkedIn"></a>
+                        <a href="https://www.instagram.com/eg_ocs/" class="social-icon instagram" aria-label="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Egyptian Olympiad in Computational Science. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../js/mobile-menu.js"></script>
+    <script src="../js/nav-scroll.js"></script>
+    <script src="../js/background-symbols.js"></script>
+    <script src="../js/particles.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+        import { 
+            getFirestore, 
+            collection, 
+            doc, 
+            setDoc, 
+            getDoc, 
+            query, 
+            orderBy, 
+            onSnapshot,
+            increment,
+            updateDoc,
+            serverTimestamp,
+            getDocs
+        } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDfYyQOf-qmJChGuG8IWsbqyeYNC1pJ2M0",
+            authDomain: "eocs-2027.firebaseapp.com",
+            projectId: "eocs-2027",
+            storageBucket: "eocs-2027.firebasestorage.app",
+            messagingSenderId: "854476826369",
+            appId: "1:854476826369:web:759f09c5f2cfd8f4b59d00",
+            measurementId: "G-PDE7JT5765"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        const form = document.getElementById('ambassadorForm');
+        const dashboard = document.getElementById('dashboard');
+        const cardTitle = document.getElementById('cardTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const POINTS_PER_REFERRAL = 1;
+
+        function sanitizeEmail(email) {
+            return email.toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function generateReferralLink(email) {
+            const base = window.location.origin + window.location.pathname.replace('ambassador.html','');
+            const cleanEmail = sanitizeEmail(email);
+            return base + 'auth/register.html?ref=' + cleanEmail;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                submitBtn.classList.add('submit-loading');
+                submitBtn.innerHTML = 'Creating... <span class="loading-spinner"></span>';
+            } else {
+                submitBtn.classList.remove('submit-loading');
+                submitBtn.innerHTML = 'Become an Ambassador';
+            }
+        }
+
+        async function loadDashboard(data) {
+            document.getElementById('ambassadorName').textContent = data.name.split(' ')[0];
+            document.getElementById('referralCount').textContent = data.referrals || 0;
+            document.getElementById('pointCount').textContent = data.points || 0;
+            document.getElementById('referralLink').textContent = data.link;
+            document.getElementById('dashPoints').textContent = data.points || 0;
+            document.getElementById('dashReferrals').textContent = data.referrals || 0;
+            const rank = await getRank(data.email);
+            document.getElementById('dashRank').textContent = rank > 0 ? '#' + rank : '-';
+        }
+
+        async function getRank(email) {
+            try {
+                const q = query(collection(db, "ambassadors"), orderBy("points", "desc"));
+                const snapshot = await getDocs(q);
+                let rank = 0;
+                let found = false;
+                snapshot.forEach((docSnap) => {
+                    if (!found) {
+                        rank++;
+                        if (docSnap.data().email === email) found = true;
+                    }
+                });
+                return found ? rank : 0;
+            } catch (e) {
+                console.error("Error getting rank:", e);
+                return 0;
+            }
+        }
+
+        function initLeaderboard() {
+            const q = query(collection(db, "ambassadors"), orderBy("points", "desc"));
+            onSnapshot(q, (snapshot) => {
+                const container = document.getElementById('leaderboardContainer');
+                if (snapshot.empty) {
+                    container.innerHTML = '<div class="lb-empty"><i class="fa-solid fa-chart-simple"></i><p>No ambassadors have registered yet. Be the first to join and top the leaderboard!</p></div>';
+                    return;
+                }
+                let html = '';
+                let i = 0;
+                snapshot.forEach((docSnap) => {
+                    const amb = docSnap.data();
+                    const isFirst = i === 0;
+                    const rankDisplay = i === 0 ? '🏆' : (i === 1 ? '🥈' : (i === 2 ? '🥉' : (i + 1)));
+                    const valSize = i === 0 ? '1.9rem' : (i < 3 ? '1.55rem' : '1.35rem');
+                    html += '<div class="lb-item ' + (isFirst ? 'r1' : '') + ' reveal" style="transition-delay:' + (i * 0.06) + 's">' +
+                        '<div class="lb-rank">' + rankDisplay + '</div>' +
+                        '<div><div class="lb-name">' + escapeHtml(amb.name) + '</div><div class="lb-meta">' + escapeHtml(amb.school) + ' &middot; ' + escapeHtml(amb.country) + '</div></div>' +
+                        '<div class="lb-score"><div class="lb-val" style="font-size:' + valSize + '">' + (amb.points || 0) + '</div><div class="lb-lbl">referrals</div></div>' +
+                    '</div>';
+                    i++;
+                });
+                container.innerHTML = html;
+                container.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+            }, (error) => {
+                console.error("Leaderboard listener error:", error);
+                document.getElementById('leaderboardContainer').innerHTML = '<div class="lb-empty"><i class="fa-solid fa-triangle-exclamation"></i><p>Unable to load leaderboard. Please check your connection.</p></div>';
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            initLeaderboard();
+            const savedEmail = localStorage.getItem('eocs_ambassador_email');
+            if (savedEmail) {
+                const cleanEmail = sanitizeEmail(savedEmail);
+                try {
+                    const docRef = doc(db, "ambassadors", cleanEmail);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        form.style.display = 'none';
+                        dashboard.classList.add('active');
+                        cardTitle.textContent = 'Your Ambassador Dashboard';
+                        loadDashboard(data);
+                    }
+                } catch (e) {
+                    console.error("Error loading saved ambassador:", e);
+                }
+            }
+        });
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const school = document.getElementById('school').value.trim();
+            const country = document.getElementById('country').value;
+            const social = document.getElementById('social').value.trim();
+            if (!name || !email || !school || !country) return;
+
+            const cleanEmail = sanitizeEmail(email);
+            setLoading(true);
+
+            try {
+                const docRef = doc(db, "ambassadors", cleanEmail);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    alert('This email is already registered as an ambassador.');
+                    setLoading(false);
+                    return;
+                }
+
+                const link = generateReferralLink(email);
+                const data = {
+                    name: name,
+                    email: email,
+                    school: school,
+                    country: country,
+                    social: social,
+                    link: link,
+                    referrals: 0,
+                    points: 0,
+                    refCode: cleanEmail,
+                    joined: serverTimestamp()
+                };
+
+                await setDoc(docRef, data);
+                localStorage.setItem('eocs_ambassador_email', email);
+
+                form.style.display = 'none';
+                dashboard.classList.add('active');
+                cardTitle.textContent = 'Your Ambassador Dashboard';
+                loadDashboard(data);
+                document.getElementById('ambSection').scrollIntoView({behavior:'smooth', block:'start'});
+            } catch (error) {
+                console.error("Error saving ambassador:", error);
+                alert('There was an error saving your registration. Please try again.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        window.copyLink = function(event) {
+            const link = document.getElementById('referralLink').textContent;
+            const btn = event.currentTarget;
+            navigator.clipboard.writeText(link).then(function() {
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                btn.classList.add('copied');
+                setTimeout(function(){ btn.innerHTML = old; btn.classList.remove('copied'); }, 2000);
+            }).catch(function() {
+                const ta = document.createElement('textarea');
+                ta.value = link; document.body.appendChild(ta); ta.select();
+                document.execCommand('copy'); document.body.removeChild(ta);
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                btn.classList.add('copied');
+                setTimeout(function(){ btn.innerHTML = old; btn.classList.remove('copied'); }, 2000);
+            });
+        };
+
+        window.shareWhatsApp = function() {
+            const link = document.getElementById('referralLink').textContent;
+            const msg = '🌟 Join the Egyptian Olympiad in Computational Science! Register here: ' + link;
+            window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+        };
+        window.shareTelegram = function() {
+            const link = document.getElementById('referralLink').textContent;
+            const msg = '🌟 Join the Egyptian Olympiad in Computational Science! Register here: ' + link;
+            window.open('https://t.me/share/url?url=' + encodeURIComponent(link) + '&text=' + encodeURIComponent(msg), '_blank');
+        };
+        window.shareFacebook = function() {
+            const link = document.getElementById('referralLink').textContent;
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link), '_blank');
+        };
+        window.shareTwitter = function() {
+            const link = document.getElementById('referralLink').textContent;
+            const msg = 'Join the Egyptian Olympiad in Computational Science! 🌟';
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg) + '&url=' + encodeURIComponent(link), '_blank');
+        };
+        window.resetForm = function() {
+            localStorage.removeItem('eocs_ambassador_email');
+            form.reset();
+            form.style.display = 'block';
+            dashboard.classList.remove('active');
+            cardTitle.textContent = 'Become an Ambassador';
+            document.getElementById('ambSection').scrollIntoView({behavior:'smooth', block:'start'});
+        };
+
+        // ── Ambassador Link Lookup ──
+        document.getElementById('lookupBtn').addEventListener('click', async () => {
+            const email = document.getElementById('lookupEmail').value.trim();
+            const resultDiv = document.getElementById('lookupResult');
+            const errorDiv = document.getElementById('lookupError');
+            const loadingDiv = document.getElementById('lookupLoading');
+            const linkDiv = document.getElementById('lookupLink');
+            const btn = document.getElementById('lookupBtn');
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            resultDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            loadingDiv.style.display = 'block';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            try {
+                const cleanEmail = email.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const docRef = doc(db, "ambassadors", cleanEmail);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    linkDiv.textContent = data.link || generateReferralLink(email);
+                    resultDiv.style.display = 'block';
+                } else {
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                console.error('Lookup error:', err);
+                errorDiv.innerHTML = '<i class="fa-solid fa-circle-exclamation" style="margin-right:0.3rem;"></i> Error connecting to database. Please try again.';
+                errorDiv.style.display = 'block';
+            } finally {
+                loadingDiv.style.display = 'none';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
+        });
+
+        document.getElementById('lookupCopyBtn').addEventListener('click', () => {
+            const link = document.getElementById('lookupLink').textContent;
+            const btn = document.getElementById('lookupCopyBtn');
+            navigator.clipboard.writeText(link).then(() => {
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                btn.style.background = '#3a9a5c';
+                btn.style.color = '#fff';
+                setTimeout(() => { btn.innerHTML = old; btn.style.background = ''; btn.style.color = ''; }, 2000);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = link; document.body.appendChild(ta); ta.select();
+                document.execCommand('copy'); document.body.removeChild(ta);
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                btn.style.background = '#3a9a5c';
+                btn.style.color = '#fff';
+                setTimeout(() => { btn.innerHTML = old; btn.style.background = ''; btn.style.color = ''; }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

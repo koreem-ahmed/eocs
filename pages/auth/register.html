@@ -17,460 +17,460 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/favicon-180x180.png">
   <link rel="manifest" href="../../assets/favicon/site.webmanifest">
+<base target="_blank">
 </head>
 
 <body class="modern-page register-page">
   <canvas id="particle-network"></canvas>
-  <div class="main-content">
-  <nav class="main-nav">
-    <div class="nav-logo">
-      <a href="../../index.html"><img src="../../assets/ECOS logo - PROFILE COVER-05.svg" alt="EOCS Logo"></a>
-    </div>
-    <button class="mobile-menu-btn" title="Toggle Menu" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="nav-links desktop-nav">
-      <a href="../../index.html"><i class="fa-solid fa-house nav-link-icon"></i>Home</a>
-      <a href="../about.html"><i class="fa-solid fa-circle-info nav-link-icon"></i>About</a>
-      <a href="../eligibility.html"><i class="fa-solid fa-user-check nav-link-icon"></i>Eligibility</a>
-      <a href="../prizes.html"><i class="fa-solid fa-trophy nav-link-icon"></i>Prizes</a>
-      <a href="../partners.html"><i class="fa-solid fa-handshake nav-link-icon"></i>Partners</a>
-      <a href="../contact.html"><i class="fa-solid fa-envelope nav-link-icon"></i>Contact</a>
-      <a href="register.html" class="nav-register-btn active"><i class="fa-solid fa-rocket nav-link-icon"></i>Register</a>
-    </div>
-    <div class="mobile-nav">
-      <a href="../../index.html">Home</a>
-      <a href="../about.html">About</a>
-      <a href="../eligibility.html">Eligibility</a>
-      <a href="../prizes.html">Prizes</a>
-      <a href="../partners.html">Partners</a>
-      <a href="../contact.html">Contact</a>
-      <a href="register.html" class="nav-register-btn active">Register</a>
-    </div>
-  </nav>
 
-  <header class="page-hero register-hero">
-    <span class="hero-eyebrow">Season 2026</span>
-    <h1>JOIN EOCS</h1>
-    <hr class="hero-divider">
-    <p>Create your account and begin your journey in computational science with Egypt's premier student olympiad.</p>
-  </header>
-
-  <section class="register-section">
-    <div class="register-form-card">
-      <form class="auth-form register-form-grid" id="registerForm" novalidate>
-        <p class="form-section-title">Personal Information</p>
-        <div class="form-group">
-          <label for="fullNameEn">Full Name (in English)</label>
-          <input type="text" id="fullNameEn" name="fullNameEn" required>
-          <small class="error-text"></small>
-          <small class="help-text">Enter your full name as it appears on official documents</small>
-        </div>
-
-        <div class="form-group">
-          <label for="fullNameAr">Full Name (in Arabic)</label>
-          <input type="text" id="fullNameAr" name="fullNameAr" required>
-          <small class="error-text"></small>
-          <small class="help-text">Enter your full name in Arabic characters</small>
-        </div>
-
-        <div class="form-group">
-          <label for="nationalId">National ID</label>
-          <input type="text" id="nationalId" name="nationalId" pattern="[0-9]{14}" title="National ID must be 14 digits" required>
-          <small class="error-text"></small>
-          <small class="help-text">Enter your 14-digit national ID number</small>
-        </div>
-
-        <div class="form-group">
-          <label for="birthdate">Birthdate</label>
-          <input type="date" id="birthdate" name="birthdate" required>
-          <small class="error-text"></small>
-          <small class="help-text">You must be between 14 and 25 years old to participate</small>
-        </div>
-
-        <p class="form-section-title">Account & Contact</p>
-
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
-          <small class="error-text"></small>
-          <small class="help-text">Enter a valid email address you check regularly</small>
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$"
-                 title="Password must be at least 8 characters and include at least one letter and one number" required>
-          <small class="error-text"></small>
-        </div>
-
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" required>
-          <small class="error-text"></small>
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone Number (preferably WhatsApp)</label>
-          <input type="tel" id="phone" name="phone" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" required>
-          <small class="error-text"></small>
-        </div>
-
-        <p class="form-section-title">School Details</p>
-
-        <div class="form-group">
-          <label for="schoolName">School Name</label>
-          <input type="text" id="schoolName" name="schoolName" required>
-          <small class="error-text"></small>
-        </div>
-
-        <div class="form-group">
-          <label for="governorate">School Governorate</label>
-          <select id="governorate" name="governorate" required>
-            <option value="">Select Governorate</option>
-            <option value="Cairo">Cairo</option>
-            <option value="Alexandria">Alexandria</option>
-            <option value="Giza">Giza</option>
-            <option value="Qalyubia">Qalyubia</option>
-            <option value="Gharbia">Gharbia</option>
-            <option value="Menoufia">Menoufia</option>
-            <option value="Beheira">Beheira</option>
-            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-            <option value="Damietta">Damietta</option>
-            <option value="Port Said">Port Said</option>
-            <option value="Ismailia">Ismailia</option>
-            <option value="Suez">Suez</option>
-            <option value="Sharqia">Sharqia</option>
-            <option value="Dakahlia">Dakahlia</option>
-            <option value="Faiyum">Faiyum</option>
-            <option value="Beni Suef">Beni Suef</option>
-            <option value="Minya">Minya</option>
-            <option value="Asyut">Asyut</option>
-            <option value="Sohag">Sohag</option>
-            <option value="Qena">Qena</option>
-            <option value="Luxor">Luxor</option>
-            <option value="Aswan">Aswan</option>
-            <option value="Red Sea">Red Sea</option>
-            <option value="New Valley">New Valley</option>
-            <option value="Matrouh">Matrouh</option>
-            <option value="North Sinai">North Sinai</option>
-            <option value="South Sinai">South Sinai</option>
-          </select>
-          <small class="error-text"></small>
-        </div>
-
-        <div class="form-group form-group--full">
-          <label for="gradeLevel">Grade Level</label>
-          <select id="gradeLevel" name="gradeLevel" required>
-            <option value="">Select Grade Level</option>
-            <option value="9">Grade 9</option>
-            <option value="10">Grade 10</option>
-            <option value="11">Grade 11</option>
-            <option value="12">Grade 12</option>
-            <option value="UG">Under Grad</option>
-          </select>
-          <small class="error-text"></small>
-        </div>
-
-        <div class="form-error form-group--full" style="display: none;">
-          <i class="fas fa-exclamation-circle"></i>
-          <span class="error-message"></span>
-        </div>
-
-        <button type="submit" class="auth-submit hero-button primary form-group--full">
-          <span class="button-text"><i class="fa-solid fa-rocket btn-icon"></i> Complete Registration</span>
-          <span class="loading-spinner" style="display: none;">
-            <i class="fas fa-spinner fa-spin"></i>
-          </span>
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="main-footer modern-footer">
-    <div class="footer-content">
-      <div class="footer-section footer-brand">
-        <img src="../../assets/ECOS logo - PROFILE COVER-05.svg" alt="EOCS" class="footer-logo">
-        <p>Egyptian Olympiad in Computational Science — bridging heritage and innovation for students across Egypt.</p>
-      </div>
-      <div class="footer-section">
-        <h3>Explore</h3>
-        <ul>
-          <li><a href="../about.html">About EOCS</a></li>
-          <li><a href="../eligibility.html">Eligibility</a></li>
-          <li><a href="../prizes.html">Prizes</a></li>
-          <li><a href="../partners.html">Partners</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Competition</h3>
-        <ul>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="../../index.html#competition">Structure</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Connect</h3>
-        <div class="social-links">
-          <a href="https://www.facebook.com/egyptocs" class="social-icon facebook" aria-label="Facebook"></a>
-          <a href="https://whatsapp.com/channel/0029Vb5QNKSKAwEiegaoYF2B" class="social-icon whatsapp" aria-label="WhatsApp"></a>
-          <a href="https://www.linkedin.com/company/eg-ocs/" class="social-icon linkedin" aria-label="LinkedIn"></a>
-          <a href="https://www.instagram.com/eg_ocs/" class="social-icon instagram" aria-label="Instagram"></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Egyptian Olympiad in Computational Science. All rights reserved.</p>
-    </div>
-  </footer>
+  <!-- Living background symbols (same as other pages) -->
+  <div class="background-symbols" aria-hidden="true">
+    <span class="bg-symbol" style="top:10%;left:5%;font-size:6rem;animation-delay:0s;">&#x2625;</span>
+    <span class="bg-symbol" style="top:30%;right:8%;font-size:5rem;animation-delay:-5s;">&#x25B3;</span>
+    <span class="bg-symbol" style="top:60%;left:3%;font-size:7rem;animation-delay:-10s;">&#x2625;</span>
+    <span class="bg-symbol" style="top:80%;right:5%;font-size:4rem;animation-delay:-15s;">&#x25C7;</span>
+    <span class="bg-symbol" style="top:45%;left:50%;font-size:8rem;animation-delay:-20s;opacity:0.05;">&#x13199;</span>
+    <span class="bg-symbol" style="top:15%;left:60%;font-size:4.5rem;animation-delay:-8s;">&#x13080;</span>
+    <span class="bg-symbol" style="top:75%;left:25%;font-size:6.5rem;animation-delay:-12s;">&#x25B3;</span>
   </div>
 
-  <script>
-    const form = document.getElementById('registerForm');
-    const submitButton = form.querySelector('.auth-submit');
-    const buttonText = submitButton.querySelector('.button-text');
-    const loadingSpinner = submitButton.querySelector('.loading-spinner');
-    const formError = form.querySelector('.form-error');
-    const errorMessage = formError.querySelector('.error-message');
+  <div class="main-content">
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-logo">
+        <a href="../../index.html"><img src="../../assets/ECOS logo - PROFILE COVER-05.svg" alt="EOCS Logo"></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobBtn" title="Toggle Menu" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links desktop-nav">
+        <a href="../../index.html"><i class="fa-solid fa-house nav-link-icon"></i>Home</a>
+        <a href="../about.html"><i class="fa-solid fa-circle-info nav-link-icon"></i>About</a>
+        <a href="../eligibility.html"><i class="fa-solid fa-user-check nav-link-icon"></i>Eligibility</a>
+        <a href="../prizes.html"><i class="fa-solid fa-trophy nav-link-icon"></i>Prizes</a>
+        <a href="../ambassador.html"><i class="fa-solid fa-star nav-link-icon"></i>Ambassador</a>
+        <a href="../partners.html"><i class="fa-solid fa-handshake nav-link-icon"></i>Partners</a>
+        <a href="../contact.html"><i class="fa-solid fa-envelope nav-link-icon"></i>Contact</a>
+        <a href="register.html" class="nav-register-btn active"><i class="fa-solid fa-rocket nav-link-icon"></i>Register</a>
+      </div>
+      <div class="mobile-nav" id="mobNav">
+        <a href="../../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../eligibility.html">Eligibility</a>
+        <a href="../prizes.html">Prizes</a>
+        <a href="../ambassador.html">Ambassador</a>
+        <a href="../partners.html">Partners</a>
+        <a href="../contact.html">Contact</a>
+        <a href="register.html" class="nav-register-btn active">Register</a>
+      </div>
+    </nav>
 
-    // Validation functions
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
+    <header class="page-hero register-hero">
+      <span class="hero-eyebrow">Season 2026</span>
+      <h1>JOIN EOCS</h1>
+      <hr class="hero-divider">
+      <p>Create your account and begin your journey in computational science with Egypt's premier student olympiad.</p>
+    </header>
+
+    <section class="register-section">
+      <div class="register-form-card">
+        <form class="auth-form register-form-grid" id="registerForm" novalidate>
+          <p class="form-section-title">Personal Information</p>
+          <div class="form-group">
+            <label for="fullNameEn">Full Name (in English)</label>
+            <input type="text" id="fullNameEn" name="fullNameEn" required>
+            <small class="error-text"></small>
+            <small class="help-text">Enter your full name as it appears on official documents</small>
+          </div>
+
+          <div class="form-group">
+            <label for="fullNameAr">Full Name (in Arabic)</label>
+            <input type="text" id="fullNameAr" name="fullNameAr" required>
+            <small class="error-text"></small>
+            <small class="help-text">Enter your full name in Arabic characters</small>
+          </div>
+
+          <div class="form-group">
+            <label for="nationalId">National ID</label>
+            <input type="text" id="nationalId" name="nationalId" pattern="[0-9]{14}" title="National ID must be 14 digits" required>
+            <small class="error-text"></small>
+            <small class="help-text">Enter your 14-digit national ID number</small>
+          </div>
+
+          <div class="form-group">
+            <label for="birthdate">Birthdate</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+            <small class="error-text"></small>
+            <small class="help-text">You must be between 14 and 25 years old to participate</small>
+          </div>
+
+          <p class="form-section-title">Account & Contact</p>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+            <small class="error-text"></small>
+            <small class="help-text">Enter a valid email address you check regularly</small>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$"
+                   title="Password must be at least 8 characters and include at least one letter and one number" required>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number (preferably WhatsApp)</label>
+            <input type="tel" id="phone" name="phone" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" required>
+            <small class="error-text"></small>
+          </div>
+
+          <p class="form-section-title">School Details</p>
+
+          <div class="form-group">
+            <label for="schoolName">School Name</label>
+            <input type="text" id="schoolName" name="schoolName" required>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="governorate">School Governorate</label>
+            <select id="governorate" name="governorate" required>
+              <option value="">Select Governorate</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Alexandria">Alexandria</option>
+              <option value="Giza">Giza</option>
+              <option value="Qalyubia">Qalyubia</option>
+              <option value="Gharbia">Gharbia</option>
+              <option value="Menoufia">Menoufia</option>
+              <option value="Beheira">Beheira</option>
+              <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+              <option value="Damietta">Damietta</option>
+              <option value="Port Said">Port Said</option>
+              <option value="Ismailia">Ismailia</option>
+              <option value="Suez">Suez</option>
+              <option value="Sharqia">Sharqia</option>
+              <option value="Dakahlia">Dakahlia</option>
+              <option value="Faiyum">Faiyum</option>
+              <option value="Beni Suef">Beni Suef</option>
+              <option value="Minya">Minya</option>
+              <option value="Asyut">Asyut</option>
+              <option value="Sohag">Sohag</option>
+              <option value="Qena">Qena</option>
+              <option value="Luxor">Luxor</option>
+              <option value="Aswan">Aswan</option>
+              <option value="Red Sea">Red Sea</option>
+              <option value="New Valley">New Valley</option>
+              <option value="Matrouh">Matrouh</option>
+              <option value="North Sinai">North Sinai</option>
+              <option value="South Sinai">South Sinai</option>
+            </select>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group form-group--full">
+            <label for="gradeLevel">Grade Level</label>
+            <select id="gradeLevel" name="gradeLevel" required>
+              <option value="">Select Grade Level</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
+              <option value="UG">Under Grad</option>
+            </select>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-error form-group--full" style="display: none;">
+            <i class="fas fa-exclamation-circle"></i>
+            <span class="error-message"></span>
+          </div>
+
+          <button type="submit" class="auth-submit hero-button primary form-group--full">
+            <span class="button-text"><i class="fa-solid fa-rocket btn-icon"></i> Complete Registration</span>
+            <span class="loading-spinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i>
+            </span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="main-footer modern-footer">
+      <div class="footer-content">
+        <div class="footer-section footer-brand">
+          <img src="../../assets/ECOS logo - PROFILE COVER-05.svg" alt="EOCS" class="footer-logo">
+          <p>Egyptian Olympiad in Computational Science — bridging heritage and innovation for students across Egypt.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="../about.html">About EOCS</a></li>
+            <li><a href="../eligibility.html">Eligibility</a></li>
+            <li><a href="../prizes.html">Prizes</a></li>
+            <li><a href="../partners.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Competition</h3>
+          <ul>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="../../index.html#competition">Structure</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/egyptocs" class="social-icon facebook" aria-label="Facebook"></a>
+            <a href="https://whatsapp.com/channel/0029Vb5QNKSKAwEiegaoYF2B" class="social-icon whatsapp" aria-label="WhatsApp"></a>
+            <a href="https://www.linkedin.com/company/eg-ocs/" class="social-icon linkedin" aria-label="LinkedIn"></a>
+            <a href="https://www.instagram.com/eg_ocs/" class="social-icon instagram" aria-label="Instagram"></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Egyptian Olympiad in Computational Science. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+<script type="module">
+/* ─────────────────────────────
+   🔥 Firebase Setup (GLOBAL)
+───────────────────────────── */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getFirestore, doc, updateDoc, increment, getDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDfYyQOf-qmJChGuG8IWsbqyeYNC1pJ2M0",
+  authDomain: "eocs-2027.firebaseapp.com",
+  projectId: "eocs-2027",
+  storageBucket: "eocs-2027.firebasestorage.app",
+  messagingSenderId: "854476826369",
+  appId: "1:854476826369:web:759f09c5f2cfd8f4b59d00",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ─────────────────────────────
+   📥 Capture referral from URL
+───────────────────────────── */
+(function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const refEmail = urlParams.get("ref");
+  if (refEmail) {
+    sessionStorage.setItem("eocs_pending_referral", refEmail);
+    console.log("📌 Referral captured:", refEmail);
+  }
+})();
+
+/* ─────────────────────────────
+   📌 Form Elements
+───────────────────────────── */
+const form = document.getElementById("registerForm");
+const submitButton = form.querySelector(".auth-submit");
+const buttonText = submitButton.querySelector(".button-text");
+const loadingSpinner = submitButton.querySelector(".loading-spinner");
+const formError = form.querySelector(".form-error");
+const errorMessage = formError.querySelector(".error-message");
+
+/* ─────────────────────────────
+   ✅ Validation Functions
+───────────────────────────── */
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validateNationalId(id) {
+  return /^[0-9]{14}$/.test(id);
+}
+
+function validatePhone(phone) {
+  return /^01[0-9]{9}$/.test(phone);
+}
+
+function validateBirthdate(date) {
+  const birthDate = new Date(date);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+  return age >= 14 && age <= 25;
+}
+
+function validatePassword(password) {
+  return /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(password);
+}
+
+/* ─────────────────────────────
+   ⚠️ UI Helpers
+───────────────────────────── */
+function showFieldError(field, message) {
+  const errorText = field.nextElementSibling;
+  errorText.textContent = message;
+  errorText.style.display = "block";
+  field.classList.add("error");
+}
+
+function clearFieldError(field) {
+  const errorText = field.nextElementSibling;
+  errorText.textContent = "";
+  errorText.style.display = "none";
+  field.classList.remove("error");
+}
+
+function showError(message) {
+  errorMessage.textContent = message;
+  formError.style.display = "flex";
+}
+
+function hideError() {
+  formError.style.display = "none";
+}
+
+function setLoading(isLoading) {
+  submitButton.disabled = isLoading;
+  buttonText.style.display = isLoading ? "none" : "block";
+  loadingSpinner.style.display = isLoading ? "block" : "none";
+}
+
+/* ─────────────────────────────
+   ⚡ Real-time Validation
+───────────────────────────── */
+document.getElementById("email").addEventListener("input", (e) => {
+  if (e.target.value && !validateEmail(e.target.value))
+    showFieldError(e.target, "Invalid email");
+  else clearFieldError(e.target);
+});
+
+document.getElementById("phone").addEventListener("input", (e) => {
+  if (e.target.value && !validatePhone(e.target.value))
+    showFieldError(e.target, "Invalid Egyptian phone");
+  else clearFieldError(e.target);
+});
+
+document.getElementById("nationalId").addEventListener("input", (e) => {
+  if (e.target.value && !validateNationalId(e.target.value))
+    showFieldError(e.target, "Must be 14 digits");
+  else clearFieldError(e.target);
+});
+
+/* ─────────────────────────────
+   🚀 MAIN SUBMIT
+───────────────────────────── */
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  hideError();
+
+  let isValid = true;
+
+  form.querySelectorAll("input[required], select[required]").forEach((field) => {
+    if (!field.value.trim()) {
+      showFieldError(field, "Required");
+      isValid = false;
     }
+  });
 
-    function validateNationalId(id) {
-      return /^[0-9]{14}$/.test(id);
-    }
+  if (!isValid) {
+    showError("Fix errors first");
+    return;
+  }
 
-    function validatePhone(phone) {
-      return /^01[0-9]{9}$/.test(phone);
-    }
+  try {
+    setLoading(true);
 
-    function validateBirthdate(date) {
-      const birthDate = new Date(date);
-      const today = new Date();
-      const age = today.getFullYear() - birthDate.getFullYear();
-      const monthDiff = today.getMonth() - birthDate.getMonth();
+    /* ───── 🔥 Firebase Referral ───── */
+    const pendingRef = sessionStorage.getItem("eocs_pending_referral");
 
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-
-      return age >= 14 && age <= 25;
-    }
-
-    function validatePassword(password) {
-      return /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(password);
-    }
-
-    function showFieldError(field, message) {
-      const errorText = field.nextElementSibling;
-      errorText.textContent = message;
-      errorText.style.display = 'block';
-      field.classList.add('error');
-    }
-
-    function clearFieldError(field) {
-      const errorText = field.nextElementSibling;
-      errorText.textContent = '';
-      errorText.style.display = 'none';
-      field.classList.remove('error');
-    }
-
-    function showError(message) {
-      errorMessage.textContent = message;
-      formError.style.display = 'flex';
-      formError.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }
-
-    function hideError() {
-      formError.style.display = 'none';
-    }
-
-    function setLoading(isLoading) {
-      submitButton.disabled = isLoading;
-      buttonText.style.display = isLoading ? 'none' : 'block';
-      loadingSpinner.style.display = isLoading ? 'block' : 'none';
-    }
-
-    // Real-time validation
-    const emailInput = document.getElementById('email');
-    emailInput.addEventListener('input', () => {
-      if (emailInput.value && !validateEmail(emailInput.value)) {
-        showFieldError(emailInput, 'Please enter a valid email address (e.g., name@example.com)');
-      } else {
-        clearFieldError(emailInput);
-      }
-    });
-
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
-
-    passwordInput.addEventListener('input', () => {
-      if (passwordInput.value && !validatePassword(passwordInput.value)) {
-        showFieldError(passwordInput, 'Password must be at least 8 characters and include at least one letter and one number');
-      } else {
-        clearFieldError(passwordInput);
-      }
-      // Check confirm password match
-      if (confirmPasswordInput.value && confirmPasswordInput.value !== passwordInput.value) {
-        showFieldError(confirmPasswordInput, 'Passwords do not match');
-      } else if (confirmPasswordInput.value) {
-        clearFieldError(confirmPasswordInput);
-      }
-    });
-
-    confirmPasswordInput.addEventListener('input', () => {
-      if (confirmPasswordInput.value !== passwordInput.value) {
-        showFieldError(confirmPasswordInput, 'Passwords do not match');
-      } else {
-        clearFieldError(confirmPasswordInput);
-      }
-    });
-
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', () => {
-      if (phoneInput.value && !validatePhone(phoneInput.value)) {
-        showFieldError(phoneInput, 'Please enter a valid Egyptian mobile number (e.g., 0100xxxxxxx)');
-      } else {
-        clearFieldError(phoneInput);
-      }
-    });
-
-    const nationalIdInput = document.getElementById('nationalId');
-    nationalIdInput.addEventListener('input', () => {
-      if (nationalIdInput.value && !validateNationalId(nationalIdInput.value)) {
-        showFieldError(nationalIdInput, 'National ID must be exactly 14 digits');
-      } else {
-        clearFieldError(nationalIdInput);
-      }
-    });
-
-    const birthdateInput = document.getElementById('birthdate');
-    birthdateInput.addEventListener('change', () => {
-      if (birthdateInput.value && !validateBirthdate(birthdateInput.value)) {
-        showFieldError(birthdateInput, 'You must be between 14 and 25 years old to participate');
-      } else {
-        clearFieldError(birthdateInput);
-      }
-    });
-
-    // Form validation
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      hideError();
-      let isValid = true;
-
-      // Clear all previous errors
-      form.querySelectorAll('.error-text').forEach(error => error.textContent = '');
-      form.querySelectorAll('input, select').forEach(field => field.classList.remove('error'));
-
-      // Validate email
-      const email = document.getElementById('email');
-      if (!validateEmail(email.value)) {
-        showFieldError(email, 'Please enter a valid email address');
-        isValid = false;
-      }
-
-      // Validate National ID
-      const nationalId = document.getElementById('nationalId');
-      if (!validateNationalId(nationalId.value)) {
-        showFieldError(nationalId, 'National ID must be 14 digits');
-        isValid = false;
-      }
-
-      // Validate phone
-      const phone = document.getElementById('phone');
-      if (!validatePhone(phone.value)) {
-        showFieldError(phone, 'Please enter a valid Egyptian phone number');
-        isValid = false;
-      }
-
-      // Validate password
-      const password = document.getElementById('password');
-      const confirmPassword = document.getElementById('confirmPassword');
-      if (!validatePassword(password.value)) {
-        showFieldError(password, 'Password must be at least 8 characters and include at least one letter and one number');
-        isValid = false;
-      }
-      if (password.value !== confirmPassword.value) {
-        showFieldError(confirmPassword, 'Passwords do not match');
-        isValid = false;
-      }
-
-      // Check required fields
-      form.querySelectorAll('input[required], select[required]').forEach(field => {
-        if (!field.value.trim()) {
-          showFieldError(field, 'This field is required');
-          isValid = false;
-        }
-      });
-
-      if (!isValid) {
-        showError('Please correct the errors in the form');
-        return;
-      }
+    if (pendingRef) {
+      console.log("📊 Processing referral:", pendingRef);
 
       try {
-        setLoading(true);
+        const safeId = pendingRef.replace(/[.#$[\]]/g, "_");
+        const docRef = doc(db, "ambassadors", safeId);
 
-        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfYjpkzkfl9ryqx5t1idrTTrvmpj11J6MG7e3nBg68FqYYsag/formResponse";
-        const formData = {
-          "entry.2027085933": document.getElementById('fullNameEn').value,
-          "entry.1793855602": document.getElementById('fullNameAr').value,
-          "entry.1833865131": document.getElementById('nationalId').value,
-          "entry.485008608": document.getElementById('birthdate').value,
-          "entry.886429027": document.getElementById('email').value,
-          "entry.335030511": document.getElementById('password').value,
-          "entry.775308855": document.getElementById('phone').value,
-          "entry.153570465": document.getElementById('schoolName').value,
-          "entry.1146388377": document.getElementById('governorate').value,
-          "entry.251495776": document.getElementById('gradeLevel').value
-        };
+        const snap = await getDoc(docRef);
 
-        const data = new URLSearchParams();
-        for (const [key, value] of Object.entries(formData)) {
-          data.append(key, value);
+        if (snap.exists()) {
+          await updateDoc(docRef, {
+            referrals: increment(1),
+            points: increment(1),
+          });
+          console.log("✅ Referral counted");
+        } else {
+          console.warn("❌ Ambassador not found");
         }
-
-        await fetch(formUrl, {
-          method: "POST",
-          mode: "no-cors",
-          body: data,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          }
-        });
-
-        alert("Registration submitted successfully!");
-        window.location.href = "../../index.html";
-      } catch (error) {
-        showError('An error occurred during registration. Please try again.');
-        console.error('Registration error:', error);
-      } finally {
-        setLoading(false);
+      } catch (err) {
+        console.error("🔥 Firebase error:", err);
       }
+
+      sessionStorage.removeItem("eocs_pending_referral");
+    }
+
+    /* ───── 📄 Google Form Submit ───── */
+    const formUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLSfYjpkzkfl9ryqx5t1idrTTrvmpj11J6MG7e3nBg68FqYYsag/formResponse";
+
+    const data = new URLSearchParams({
+      "entry.2027085933": document.getElementById("fullNameEn").value,
+      "entry.1793855602": document.getElementById("fullNameAr").value,
+      "entry.1833865131": document.getElementById("nationalId").value,
+      "entry.485008608": document.getElementById("birthdate").value,
+      "entry.886429027": document.getElementById("email").value,
+      "entry.335030511": document.getElementById("password").value,
+      "entry.775308855": document.getElementById("phone").value,
+      "entry.153570465": document.getElementById("schoolName").value,
+      "entry.1146388377": document.getElementById("governorate").value,
+      "entry.251495776": document.getElementById("gradeLevel").value,
     });
 
-    // Clear field error when user starts typing
-    form.querySelectorAll('input, select').forEach(field => {
-      field.addEventListener('input', () => clearFieldError(field));
+    await fetch(formUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
     });
-  </script>
 
-  <script src="../../js/mobile-menu.js"></script>
-  <script src="../../js/nav-scroll.js"></script>
+    alert("✅ Registration Successful!");
+    window.location.href = "../../index.html";
+  } catch (err) {
+    console.error(err);
+    showError("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+});
+
+/* ─────────────────────────────
+   📱 UI Extras
+───────────────────────────── */
+document.querySelectorAll("input, select").forEach((field) => {
+  field.addEventListener("input", () => clearFieldError(field));
+});
+
+const mobBtn = document.getElementById("mobBtn");
+const mainNav = document.getElementById("mainNav");
+
+mobBtn.addEventListener("click", () => {
+  mobBtn.classList.toggle("open");
+  mainNav.classList.toggle("mobile-menu-active");
+});
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) mainNav.classList.add("scrolled");
+  else mainNav.classList.remove("scrolled");
+});
+</script>
+
   <script src="../../js/particles.js"></script>
 </body>
-
-</html>
-</body>
-
 </html>
