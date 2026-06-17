@@ -379,7 +379,7 @@
         function generateReferralLink(email) {
             const base = window.location.origin + window.location.pathname.replace('ambassador.html','');
             const cleanEmail = sanitizeEmail(email);
-            return base + 'auth/register.html?ref=' + cleanEmail;
+            return 'https://eocs-chi.vercel.app/pages/auth/register.html?ref=' + cleanEmail;
         }
 
         function escapeHtml(text) {
