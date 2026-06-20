@@ -18,6 +18,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/favicon-180x180.png">
   <link rel="manifest" href="../../assets/favicon/site.webmanifest">
 <base target="_blank">
+<base target="_blank">
 </head>
 
 <body class="modern-page register-page">
@@ -248,7 +249,7 @@
    🔥 Firebase Setup (GLOBAL)
 ───────────────────────────── */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import { getFirestore, doc, updateDoc, increment, getDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+import { getFirestore, doc, updateDoc, increment, getDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDfYyQOf-qmJChGuG8IWsbqyeYNC1pJ2M0",
@@ -402,11 +403,13 @@ form.addEventListener("submit", async function (e) {
         const snap = await getDoc(docRef);
 
         if (snap.exists()) {
+          const registrantEmail = document.getElementById("email").value.trim();
           await updateDoc(docRef, {
             referrals: increment(1),
             points: increment(1),
+            emails: arrayUnion(registrantEmail)
           });
-          console.log("✅ Referral counted");
+          console.log("✅ Referral counted and email saved:", registrantEmail);
         } else {
           console.warn("❌ Ambassador not found");
         }
