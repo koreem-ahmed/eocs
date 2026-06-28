@@ -407,7 +407,7 @@ form.addEventListener("submit", async function (e) {
           await updateDoc(docRef, {
             referrals: increment(2),
             points: increment(2),
-            emails: arrayUnion(registrantEmail)
+            emails_for_2: arrayUnion(registrantEmail)
           });
           console.log("✅ Referral counted and email saved:", registrantEmail);
         } else {
